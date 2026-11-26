@@ -29,7 +29,7 @@ app.post("/api/payment", (req, res) => {
 
   if (isValidIntegerAmount(amount)) {
     return res.status(200).json({
-      status: "success",
+      payment_status: "success",
       message: "Payment processed successfully.",
       amount: Number(amount),
       transactionId: `TXN${Date.now()}`,
@@ -37,7 +37,7 @@ app.post("/api/payment", (req, res) => {
   }
 
   return res.status(400).json({
-    status: "failure",
+    payment_status: "failure",
     message: "Payment failed. Amount must be a whole number (integer) greater than 0.",
     amount: amount ?? null,
   });
